@@ -1,3 +1,9 @@
+"use client";
+
+import { useSelectedLayoutSegment } from "next/navigation";
+
 export default function Page() {
-    return <h1>DOCS</h1>;
+    const segment = useSelectedLayoutSegment();
+
+    return <h1>DOCS : {segment}</h1>;
 }

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import GlobalHeader from "./components/header";
 
 const geistSans = localFont({
     src: "./fonts/GeistVF.woff",
@@ -26,64 +27,51 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body className={`${geistSans.variable} ${geistMono.variable}`}>
-                <div
-                    style={{
-                        position: "fixed",
-                        top: 0,
-                        display: "flex",
-                        justifyContent: "space-between",
-                        alignItems: "center",
-                        height: "54px",
-                        padding: "12px",
-                        backgroundColor: "red",
-                        width: "100%",
-                    }}
-                >
-                    <div>Logo</div>
-                    <div>Menu</div>
+                <div className="mainContainer">
+                    <GlobalHeader />
+                    <main
+                        style={{
+                            position: "fixed",
+                            top: "54px",
+                            bottom: "8px",
+                            left: "8px",
+                            right: "8px",
+                        }}
+                    >
+                        <aside
+                            style={{
+                                flexDirection: "column",
+                                position: "absolute",
+                                width: "210px",
+                                top: 0,
+                                left: 0,
+                                bottom: 0,
+                                zIndex: 101,
+                                padding: "14px",
+                                overflow: "visible",
+                                visibility: "visible",
+                                backgroundColor: "blue",
+                            }}
+                        >
+                            <div>navigate</div>
+                            <div>others</div>
+                        </aside>
+                        <div
+                            style={{
+                                position: "absolute",
+                                top: 0,
+                                left: "210px",
+                                bottom: 0,
+                                right: 0,
+                                zIndex: 201,
+                                borderRadius: "8px",
+                                overflow: "auto",
+                            }}
+                        >
+                            {children}
+                        </div>
+                    </main>
                 </div>
-                <main
-                    style={{
-                        position: "fixed",
-                        top: "54px",
-                        bottom: "8px",
-                        left: "8px",
-                        right: "8px",
-                    }}
-                >
-                    <aside
-                        style={{
-                            flexDirection: "column",
-                            position: "absolute",
-                            width: "210px",
-                            top: 0,
-                            left: 0,
-                            bottom: 0,
-                            zIndex: 101,
-                            padding: "14px",
-                            overflow: "visible",
-                            visibility: "visible",
-                            backgroundColor: "blue",
-                        }}
-                    >
-                        <div>navigate</div>
-                        <div>others</div>
-                    </aside>
-                    <div
-                        style={{
-                            position: "absolute",
-                            top: 0,
-                            left: "210px",
-                            bottom: 0,
-                            right: 0,
-                            zIndex: 201,
-                            borderRadius: "8px",
-                            overflow: "auto",
-                        }}
-                    >
-                        {children}
-                    </div>
-                </main>
             </body>
         </html>
     );
